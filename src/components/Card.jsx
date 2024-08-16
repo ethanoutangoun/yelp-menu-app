@@ -3,9 +3,9 @@
 import { Dot, Utensils } from "lucide-react";
 
 const Card = (props) => {
-  const { id, image_url, name, location, rating, business_hours, review_count  } = props;
+  const { id, image_url, name, location, rating, review_count  } = props;
   return (
-    <div key={id} className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md">
+    <div onClick={()=>console.log(props)} key={id} className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md">
       {image_url ? <img
         src={image_url}
         alt={name}

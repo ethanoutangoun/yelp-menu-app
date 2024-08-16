@@ -128,8 +128,8 @@ const Feed = () => {
   return (
     <>
       <h2 className="text-3xl font-bold my-3 mt-5 flex gap-1">
-        Generate Rated Menus{" "}
-        <span className="hidden md:flex"> on the Fly 📋</span>{" "}
+        Create Rated Menus{" "}
+        <span className="hidden md:flex"> on the Fly</span>{" "}
       </h2>
       <h3 className=" text-sm text-gray-500 max-w-[700px]">
         Not sure what to eat at a new spot and don&apos;t want to dig through
@@ -139,8 +139,8 @@ const Feed = () => {
 
       <form
         onSubmit={(e) => {
-          e.preventDefault(); // Prevents default form submission
-          handleClick(); // Call your search function
+          e.preventDefault(); 
+          handleClick(); 
         }}
         className="mt-5 flex gap-5 items-center"
       >
@@ -153,7 +153,6 @@ const Feed = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="focus:outline-none w-full"
             placeholder="Search for a restaurant..."
-            // required
           />
         </div>
 

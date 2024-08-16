@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full px-5 sm:px-10 py-4 flex z-50 justify-between backdrop-blur-lg bg-white/30 border border-white/10 
+      className={`fixed top-0 left-0 w-full px-5 sm:px-10 py-4 flex z-50 justify-between backdrop-blur-lg bg-white/70 border border-white/10 
  dark:bg-background transition duration-1000 ease-in-out`}
     >
       <div onClick={handleClick} className="flex gap-3 items-center">

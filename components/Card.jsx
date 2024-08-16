@@ -5,7 +5,7 @@ const Card = (props) => {
     <img src={image_url} alt={name} className="object-cover w-full h-48 rounded-t-md" />
     <div className="p-4">
       <h2 className="font-bold text-lg group-hover:text-blue-500">{name}</h2>
-      <p className="text-sm text-gray-500">{location.address1}</p>
+      <p className="text-sm text-gray-500">{location.display_address[0]}, {location.display_address[1]}</p>
     </div>
   </div>;
 };

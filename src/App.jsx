@@ -103,10 +103,10 @@ function App() {
       </div>
 
       <div className="px-10 mt-5">
-        <h3>
-          Not sure what to eat at a new spot and don&apos;t want to dig through countless reviews? Our software uses Natural Language
-          Processing to enhance reviews across Yelp, Google, and other sources
-          to provide you reliable ratings on specific menu items. Generate a
+
+        <h2 className="text-3xl font-bold my-3">Generate Rated Menus <br className="md:hidden"/> on the Fly 📋</h2>
+        <h3 className=" text-sm text-gray-500 max-w-[700px]">
+          Not sure what to eat at a new spot and don&apos;t want to dig through countless reviews? <br className="md:flex hidden" /> Generate a
           menu for your restaurant of choice and see the most recommended meals.
         </h3>
 
@@ -121,7 +121,7 @@ function App() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 w-3/4"
+            className="border border-gray-300 rounded-lg p-2 w-1/2 md:w-3/4"
             placeholder="Search for a restaurant..."
             // required
           />

@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 
 import { Dot, Utensils } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Card = (props) => {
-  const { id, image_url, name, location, rating, review_count  } = props;
+  const { id, alias, image_url, name, location, rating, review_count  } = props;
+
+  const navigate = useNavigate();
+
   return (
-    <div onClick={()=>console.log(props)} key={id} className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md">
+    <div onClick={()=>navigate(`/restaurant/${alias}`)} key={id} className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md">
       {image_url ? <img
         src={image_url}
         alt={name}

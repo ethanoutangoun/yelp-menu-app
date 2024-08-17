@@ -7,8 +7,8 @@ import { mockData } from "../mockdata";
 
 
 const Feed = () => {
-  // const API_KEY = import.meta.env.VITE_YELP_API_KEY;
-  const API_KEY = import.meta.env.VITE_DEV_API_KEY;
+  const API_KEY = import.meta.env.VITE_YELP_API_KEY;
+  // const API_KEY = import.meta.env.VITE_DEV_API_KEY;
   // const API_KEY = null;
 
   const getBusinesses = async (apiKey, term, location, latitude, longitude) => {
@@ -61,7 +61,7 @@ const Feed = () => {
     setResults(businesses);
   };
 
-  const dev_mode = true;
+  const dev_mode = false;
 
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");
@@ -195,7 +195,7 @@ const Feed = () => {
         </h4>
       )}
 
-      <div className="mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+      <div className="mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
         {dev_mode &&
           mockData.map((data, index) => <Card key={index} {...data} />)}
 

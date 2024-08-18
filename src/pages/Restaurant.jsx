@@ -10,6 +10,7 @@ const Restaurant = () => {
   const [mockReviews, setMockReviews] = useState([]);
   const API_KEY = import.meta.env.VITE_OPEN_AI_KEY;
 
+  
   // Extract and transform the reviews data on mount
   useEffect(() => {
     // Extract and transform the reviews data on mount

@@ -11,6 +11,8 @@ const Feed = () => {
   // const API_KEY = import.meta.env.VITE_DEV_API_KEY;
   // const API_KEY = null;
 
+  const PROD = import.meta.env.VITE_PROD;
+
   const getBusinesses = async (apiKey, term, location, latitude, longitude) => {
     if (!location && (!latitude || !longitude)) {
       console.log("Location or latitude and longitude not specified");
@@ -61,7 +63,11 @@ const Feed = () => {
     setResults(businesses);
   };
 
-  const dev_mode = false;
+  let dev_mode = true;
+
+  if (PROD === "true") {
+    dev_mode = false;
+  }
 
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");

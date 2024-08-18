@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import { restaurant_data, processed_reviews } from "../mockdata";
+import { restaurant_data, processed_reviews, menu_items } from "../mockdata";
 import { useState, useEffect } from "react";
 import { process_reviews } from "../utils";
+import Menu from "../components/Menu";
 
 const Restaurant = () => {
   const { id } = useParams();
@@ -41,6 +42,14 @@ const Restaurant = () => {
       <button className="p-2 bg-red-600 text-white rounded-lg"  onClick={() => console.log(processed_reviews)}>
         Log processed reviews
       </button>
+
+      <button className="p-2 bg-red-600 text-white rounded-lg"  onClick={() => console.log(menu_items)}>
+        Log menu
+      </button>
+      </div>
+
+      <div className="mt-10 py-4">
+        <Menu menu = {menu_items} />
       </div>
     </div>
   );

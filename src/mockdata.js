@@ -3080,3 +3080,122 @@ export const processed_reviews = [
     rating: 3,
   },
 ];
+
+export const menu_items = [
+  {
+    category: "Tacos",
+    items: [
+      { item: "Goat Meat Taco", rating: 5.0, reviews: 1 },
+      { item: "Chicken Tacos", rating: 4.5, reviews: 2 },
+      { item: "Tacos", rating: 4.4, reviews: 5 },
+      { item: "Tacos (Carne Asada + Carnitas)", rating: 2.0, reviews: 2 },
+      { item: "Pastor", rating: 5.0, reviews: 1 },
+      { item: "Cabeza Tacos", rating: 4.0, reviews: 1 },
+      { item: "Beef Soft Tacos", rating: 5.0, reviews: 1 },
+      {
+        item: "Soft Chicken Tacos Braised Tinga Style",
+        rating: 5.0,
+        reviews: 1,
+      },
+      { item: "Tripas Tacos", rating: 4.0, reviews: 1 },
+      { item: "Tacos al Pastor", rating: 1.0, reviews: 1 },
+      { item: "Taco", rating: 1.0, reviews: 1 },
+      { item: "Tacos Dorados", rating: 4.0, reviews: 1 },
+    ],
+  },
+  {
+    category: "Burritos",
+    items: [
+      { item: "Carne Asada Burrito", rating: 5.0, reviews: 2 },
+      {
+        item: "Cal Poly Burrito with Chile Verde Sauce",
+        rating: 3.0,
+        reviews: 1,
+      },
+      { item: "Super Burrito", rating: 4.666666666666667, reviews: 3 },
+      { item: "California Burrito", rating: 4.5, reviews: 4 },
+      { item: "Burritos", rating: 3.3333333333333335, reviews: 3 },
+      { item: "Carne Asada Fries", rating: 5.0, reviews: 2 },
+      { item: "California Burrito with Shrimp", rating: 5.0, reviews: 1 },
+      { item: "Asada Burrito", rating: 1.0, reviews: 2 },
+      { item: "Burrito", rating: 5.0, reviews: 3 },
+      { item: "Asada Burrito with Avocado", rating: 5.0, reviews: 1 },
+      { item: "Child's Burrito", rating: 3.0, reviews: 1 },
+      { item: "California Veggie Burrito", rating: 5.0, reviews: 1 },
+      { item: "California Burrito with Carnitas", rating: 5.0, reviews: 1 },
+      { item: "Wet Burrito", rating: 4.0, reviews: 1 },
+      { item: "Al Pastor Super Burrito", rating: 5.0, reviews: 1 },
+      { item: "Chicken Burrito", rating: 4.0, reviews: 1 },
+      { item: "Carne Asada Super Burrito", rating: 5.0, reviews: 2 },
+    ],
+  },
+  {
+    category: "Chips",
+    items: [
+      { item: "Chips and Salsas", rating: 4.5, reviews: 2 },
+      { item: "Chips", rating: 4.333333333333333, reviews: 3 },
+      { item: "Chips and Salsa Bar", rating: 4.5, reviews: 2 },
+      { item: "Chip Tray", rating: 4.0, reviews: 1 },
+      { item: "Homemade Tortilla Chips & Salsa", rating: 5.0, reviews: 1 },
+      { item: "Chips and Dip", rating: 5.0, reviews: 1 },
+      { item: "Chips and Salsa", rating: 4.5, reviews: 4 },
+    ],
+  },
+  {
+    category: "Salsas",
+    items: [
+      { item: "Salsa Bar", rating: 4.0, reviews: 2 },
+      { item: "Salsa", rating: 5.0, reviews: 2 },
+      { item: "Molcajete Red Salsa", rating: 5.0, reviews: 1 },
+      { item: "Habanero Orange Sauce", rating: 4.0, reviews: 1 },
+      { item: "Spicy Green Sauce", rating: 4.0, reviews: 1 },
+      { item: "Habanero Salsa", rating: 5.0, reviews: 1 },
+      { item: "Pink Salsa", rating: 5.0, reviews: 1 },
+      { item: "Salsa Collection", rating: 5.0, reviews: 1 },
+      { item: "Salsas", rating: 5.0, reviews: 3 },
+    ],
+  },
+  {
+    category: "Drinks",
+    items: [
+      { item: "Horchata", rating: 4.5, reviews: 4 },
+      { item: "Modello", rating: 5.0, reviews: 1 },
+      { item: "Micheladas", rating: 4.0, reviews: 1 },
+      { item: "Jarrito", rating: 4.0, reviews: 1 },
+    ],
+  },
+  {
+    category: "Meats",
+    items: [
+      { item: "Carne en su Jugo", rating: 4.8, reviews: 5 },
+      { item: "Grilled Pork", rating: 5.0, reviews: 1 },
+      { item: "Lengua", rating: 5.0, reviews: 1 },
+      { item: "Cabrito (Goat) Birria", rating: 5.0, reviews: 1 },
+      { item: "Ceviche Tostada", rating: 1.0, reviews: 1 },
+      { item: "Asada", rating: 5.0, reviews: 1 },
+      { item: "Torta Abogada", rating: 5.0, reviews: 1 },
+    ],
+  },
+  {
+    category: "Sides",
+    items: [
+      { item: "Beans", rating: 1.0, reviews: 1 },
+      { item: "Chile Verde", rating: 3.0, reviews: 2 },
+      { item: "Pico de gallo", rating: 4.0, reviews: 1 },
+      { item: "Quesadillas", rating: 3.0, reviews: 1 },
+      { item: "Fresh Condiments", rating: 5.0, reviews: 1 },
+      { item: "Taco Salad", rating: 5.0, reviews: 2 },
+      { item: "Chile Relleno", rating: 2.0, reviews: 1 },
+      { item: "Beef Enchiladas", rating: 3.0, reviews: 1 },
+      { item: "Super Nachos", rating: 4.0, reviews: 1 },
+      { item: "Supreme Nachos with carne asada", rating: 5.0, reviews: 2 },
+      { item: "Shrimp", rating: 1.0, reviews: 1 },
+    ],
+  },
+];
+
+
+
+
+export const mock_restaurant_data = {
+}

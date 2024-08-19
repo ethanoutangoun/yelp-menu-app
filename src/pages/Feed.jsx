@@ -105,7 +105,7 @@ const Feed = () => {
           // Fetch businesses
           const businesses = await getBusinesses(
             API_KEY,
-            search,
+            "food",
             location,
             latitude,
             longitude

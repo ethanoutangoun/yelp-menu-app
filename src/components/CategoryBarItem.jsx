@@ -3,7 +3,7 @@ const CategoryBarItem = (props) => {
   return (
     <div
       onClick={()=>setSelectedCategory(category)}
-      className={`py-2 text-gray-800 text-sm hover:cursor-pointer transform duration-300 ease-in-out ${
+      className={`py-2 text-gray-800 text-sm hover:cursor-pointer hover:underline transform duration-300 ease-in-out ${
         selected === category && "font-semibold"
       }`}
     >

@@ -1098,6 +1098,7 @@ export const mockData = [
   },
 ];
 
+// STEP 1: Fetch Reviews
 export const restaurant_data = [
   {
     search_metadata: {
@@ -2610,6 +2611,7 @@ export const restaurant_data = [
   },
 ];
 
+// STEP 2: Process reviews using LLM to extract name and rating, then format into a list of JSON objects
 export const processed_reviews = [
   {
     menu_item: "Al Pastor Super Burrito",
@@ -3081,6 +3083,84 @@ export const processed_reviews = [
   },
 ];
 
+// STEP 3: Send to backend to cluster likewise items using K-Means clustering, then aggregate similar items into one, averaging their ratings
+export const menu_items_raw = [
+  { item: "Goat Meat Taco", rating: 5.0, reviews: 1 },
+  { item: "Carne Asada Burrito", rating: 5.0, reviews: 2 },
+  { item: "Chips and Salsas", rating: 4.5, reviews: 2 },
+  { item: "Horchata", rating: 4.5, reviews: 4 },
+  { item: "Chicken Tacos", rating: 4.5, reviews: 2 },
+  { item: "Cal Poly Burrito with Chile Verde Sauce", rating: 3.0, reviews: 1 },
+  { item: "Salsa Bar", rating: 4.0, reviews: 2 },
+  { item: "Chips", rating: 4.333333333333333, reviews: 3 },
+  { item: "Burritos", rating: 3.3333333333333335, reviews: 3 },
+  { item: "Carne en su Jugo", rating: 4.8, reviews: 5 },
+  { item: "Tacos", rating: 4.4, reviews: 5 },
+  { item: "Chile Verde", rating: 3.0, reviews: 2 },
+  { item: "Salsa", rating: 5.0, reviews: 2 },
+  { item: "Pastor", rating: 5.0, reviews: 1 },
+  { item: "Beans", rating: 1.0, reviews: 1 },
+  { item: "Modello", rating: 5.0, reviews: 1 },
+  { item: "Carne Asada Fries", rating: 5.0, reviews: 2 },
+  { item: "Super Burrito", rating: 4.666666666666667, reviews: 3 },
+  { item: "Tacos (Carne Asada + Carnitas)", rating: 2.0, reviews: 2 },
+  { item: "Carnitas", rating: 4.333333333333333, reviews: 3 },
+  { item: "Supreme Nachos with carne asada", rating: 5.0, reviews: 2 },
+  { item: "Beef Enchiladas", rating: 3.0, reviews: 1 },
+  { item: "Grilled Pork", rating: 5.0, reviews: 1 },
+  { item: "Carne Asada", rating: 4.666666666666667, reviews: 3 },
+  { item: "Chicken Fajitas", rating: 5.0, reviews: 1 },
+  { item: "Pico de gallo", rating: 4.0, reviews: 1 },
+  { item: "Quesadillas", rating: 3.0, reviews: 1 },
+  { item: "Micheladas", rating: 4.0, reviews: 1 },
+  { item: "California Burrito", rating: 4.5, reviews: 4 },
+  { item: "Habanero Orange Sauce", rating: 4.0, reviews: 1 },
+  { item: "Lengua", rating: 5.0, reviews: 1 },
+  { item: "Beef Soup", rating: 5.0, reviews: 1 },
+  { item: "Menudo", rating: 5.0, reviews: 1 },
+  { item: "Shrimp", rating: 1.0, reviews: 1 },
+  { item: "Jarrito", rating: 4.0, reviews: 1 },
+  { item: "Chip Tray", rating: 4.0, reviews: 1 },
+  { item: "Cabrito (Goat) Birria", rating: 5.0, reviews: 1 },
+  { item: "Chimichanga", rating: 5.0, reviews: 1 },
+  { item: "Ceviche Tostada", rating: 1.0, reviews: 1 },
+  { item: "Fresh Condiments", rating: 5.0, reviews: 1 },
+  { item: "Taco Salad", rating: 5.0, reviews: 2 },
+  { item: "Chile Relleno", rating: 2.0, reviews: 1 },
+  { item: "Asada", rating: 5.0, reviews: 1 },
+  { item: "Torta Abogada", rating: 5.0, reviews: 1 },
+  { item: "Spicy Green Sauce", rating: 4.0, reviews: 1 },
+  { item: "Tacos al Pastor", rating: 1.0, reviews: 1 },
+  { item: "Asada Burrito", rating: 1.0, reviews: 2 },
+  { item: "Chips and Salsa Bar", rating: 4.5, reviews: 2 },
+  { item: "Burrito", rating: 5.0, reviews: 3 },
+  { item: "Molcajete Red Salsa", rating: 5.0, reviews: 1 },
+  { item: "Super Nachos", rating: 4.0, reviews: 1 },
+  { item: "Cabeza Tacos", rating: 4.0, reviews: 1 },
+  { item: "Beef Soft Tacos", rating: 5.0, reviews: 1 },
+  { item: "Homemade Tortilla Chips & Salsa", rating: 5.0, reviews: 1 },
+  { item: "Salsas", rating: 5.0, reviews: 3 },
+  { item: "Habanero Salsa", rating: 5.0, reviews: 1 },
+  { item: "Al Pastor Super Burrito", rating: 5.0, reviews: 1 },
+  { item: "Chips and Dip", rating: 5.0, reviews: 1 },
+  { item: "Taco", rating: 1.0, reviews: 1 },
+  { item: "Pink Salsa", rating: 5.0, reviews: 1 },
+  { item: "Salsa Collection", rating: 5.0, reviews: 1 },
+  { item: "Chicken Burrito", rating: 4.0, reviews: 1 },
+  { item: "Soft Chicken Tacos Braised Tinga Style", rating: 5.0, reviews: 1 },
+  { item: "Carne Asada Super Burrito", rating: 5.0, reviews: 2 },
+  { item: "Child's Burrito", rating: 3.0, reviews: 1 },
+  { item: "Tacos Dorados", rating: 4.0, reviews: 1 },
+  { item: "California Burrito with Shrimp", rating: 5.0, reviews: 1 },
+  { item: "Wet Burrito", rating: 4.0, reviews: 1 },
+  { item: "Asada Burrito with Avocado", rating: 5.0, reviews: 1 },
+  { item: "Tripas Tacos", rating: 4.0, reviews: 1 },
+  { item: "California Veggie Burrito", rating: 5.0, reviews: 1 },
+  { item: "California Burrito with Carnitas", rating: 5.0, reviews: 1 },
+  { item: "Chips and Salsa", rating: 4.5, reviews: 4 },
+];
+
+// STEP 4: Send back to LLM to group menu items into broader categories for menu display
 export const menu_items = [
   {
     category: "Tacos",
@@ -3194,8 +3274,3 @@ export const menu_items = [
   },
 ];
 
-
-
-
-export const mock_restaurant_data = {
-}

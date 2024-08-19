@@ -4,21 +4,37 @@ import { Dot, Utensils } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Card = (props) => {
-  const { id, alias, image_url, name, location, rating, review_count  } = props;
+  const { id, alias, image_url, name, location, rating, review_count } = props;
 
   const navigate = useNavigate();
 
+  const data = {
+    id,
+    alias,
+    image_url,
+    name,
+    location,
+    rating,
+    review_count,
+  };
+
   return (
-    <div onClick={()=>navigate(`/restaurant/${alias}`)} key={id} className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md">
-      {image_url ? <img
-        src={image_url}
-        alt={name}
-        className="object-cover w-full h-48 rounded-t-md"
-      /> : 
-      <div className="w-full h-48 bg-gray-300 rounded-t-md flex items-center justify-center">
-        <Utensils className="w-16 h-16 text-gray-500" />
-      </div>
-      }
+    <div
+      onClick={() => navigate(`/restaurant/${alias}`, { state: data })}
+      key={id}
+      className="group aspect-video relative hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out select-none bg-gray-100 rounded-md"
+    >
+      {image_url ? (
+        <img
+          src={image_url}
+          alt={name}
+          className="object-cover w-full h-48 rounded-t-md"
+        />
+      ) : (
+        <div className="w-full h-48 bg-gray-300 rounded-t-md flex items-center justify-center">
+          <Utensils className="w-16 h-16 text-gray-500" />
+        </div>
+      )}
       <div className="p-4">
         <div className="flex items-center gap-1">
           <h2 className="font-bold text-lg group-hover:text-blue-500">

@@ -86,7 +86,6 @@ const Feed = () => {
       }
 
       if (dev_mode) {
-        console.log("dev mode");
         return;
       }
 
@@ -157,7 +156,7 @@ const Feed = () => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="focus:outline-none w-full"
+            className="focus:outline-none w-full bg-inherit"
             placeholder="Search for a restaurant..."
           />
         </div>
@@ -169,7 +168,7 @@ const Feed = () => {
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className=" focus:outline-none w-full"
+            className=" focus:outline-none w-full bg-inherit"
             placeholder="Location"
           />
         </div>

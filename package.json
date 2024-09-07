@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@api/yelp-developers": "file:.api/apis/yelp-developers",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.0.2",
     "axios": "^1.7.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

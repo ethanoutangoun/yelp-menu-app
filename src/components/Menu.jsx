@@ -1,6 +1,6 @@
 import CategoryBar from "./CategoryBar";
 import CategoryMenu from "./CategoryMenu";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Menu = (props) => {
   const { menu } = props;

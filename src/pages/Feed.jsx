@@ -8,9 +8,6 @@ import { mockData } from "../mockdata";
 
 const Feed = () => {
   const API_KEY = import.meta.env.VITE_YELP_API_KEY;
-  // const API_KEY = import.meta.env.VITE_DEV_API_KEY;
-  // const API_KEY = null;
-
   const PROD = import.meta.env.VITE_PROD;
 
   const getBusinesses = async (apiKey, term, location, latitude, longitude) => {
@@ -52,6 +49,13 @@ const Feed = () => {
   };
 
   const handleClick = async () => {
+
+
+    if (PROD === "false") {
+      console.log("Searching disabled in development mode");
+      return;
+    }
+
     console.log("clicked");
     const businesses = await getBusinesses(
       API_KEY,
@@ -143,6 +147,7 @@ const Feed = () => {
       </h3>
 
       <form
+        id="search-form"
         onSubmit={(e) => {
           e.preventDefault(); 
           handleClick(); 
@@ -154,9 +159,10 @@ const Feed = () => {
 
           <input
             type="text"
+            // id="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="focus:outline-none w-full bg-inherit"
+            className="focus:outline-none w-full bg-inherit autofill:bg-white"
             placeholder="Search for a restaurant..."
           />
         </div>
@@ -166,6 +172,7 @@ const Feed = () => {
 
           <input
             type="text"
+            id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             className=" focus:outline-none w-full bg-inherit"
@@ -200,7 +207,7 @@ const Feed = () => {
         </h4>
       )}
 
-      <div className="mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+      <div className="min-h-[100vh] mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
         {dev_mode &&
           mockData.map((data, index) => <Card key={index} {...data} />)}
 

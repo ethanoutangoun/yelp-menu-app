@@ -18,6 +18,7 @@ const Restaurant = () => {
   const [loading, setLoading] = useState(true);
   const [step, setStep] = useState(0);
   const [menu, setMenu] = useState(null);
+  const [show_loading, set_show_loading] = useState(false);
 
   const react_location = useLocation();
 
@@ -146,9 +147,8 @@ const Restaurant = () => {
     setHighlights(highlights);
   }, [menu]);
 
-
   const map_steps = {
-    0: "Adding Business", 
+    0: "Adding Business",
     1: "Fetching Reviews",
     2: "AI Processing Reviews",
     3: "Clustering Reviews",
@@ -156,9 +156,9 @@ const Restaurant = () => {
     5: "Menu Generated",
   };
 
-
   const handleGenerate = async () => {
     console.log("generating menu");
+    set_show_loading(true);
 
     if (!restaurant) {
       console.error("Restaurant data not found");
@@ -234,6 +234,8 @@ const Restaurant = () => {
     console.log(res5.data);
     console.log("menu posted");
     setStep(5);
+
+    set_show_loading(false);
   };
 
   const post_menu = async (data) => {
@@ -250,8 +252,8 @@ const Restaurant = () => {
   };
 
   const get_progress = () => {
-    return step/5 * 100;
-  }
+    return (step / 5) * 100;
+  };
 
   return (
     <div className="mb-10 min-h-[83vh]">
@@ -331,13 +333,13 @@ const Restaurant = () => {
             Generate Menu
           </button>
 
-          
-          {step < 4 && <div className="text-red-600">
-            {/* add mapped steps */}
-            <h3 className="text-black mt-5">{map_steps[step]}</h3>
+          {step < 4 && show_loading && (
+            <div className="text-red-600">
+              <h3 className="text-black mt-5">{map_steps[step]}...</h3>
 
-            <LoadingBar progress={get_progress()} />
-          </div>}
+              <LoadingBar progress={get_progress()} />
+            </div>
+          )}
         </div>
       )}
 

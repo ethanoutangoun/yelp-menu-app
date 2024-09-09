@@ -1,4 +1,4 @@
-import yelpLogo from "../assets/yelp.svg";
+import yelpLogo from "../assets/icon.png";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {

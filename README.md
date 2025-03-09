@@ -1,8 +1,22 @@
-# React + Vite
+# Yelp Menu Aggregator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+The **Yelp Menu Aggregator** is a web application that leverages LLMs (Large Language Models) and clustering techniques to analyze Yelp reviews and identify the best dishes at each restaurant. The project features a **React** frontend for user interaction and a **Flask** backend for data processing and model inference.
 
-Currently, two official plugins are available:
+## Features
+- **Restaurant Search:** Find restaurants using Yelp data.
+- **Top Dishes Identification:** Uses LLMs and clustering to extract and rank the best dishes from user reviews.
+- **User-Friendly Interface:** Intuitive UI built with React for seamless navigation.
+- **Efficient Backend Processing:** Flask handles data retrieval, model inference, and clustering efficiently.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend:** React (with Tailwind CSS for styling)
+- **Backend:** Flask (Python)
+- **LLM Models:** OpenAI GPT
+- **Clustering Algorithm:** KMeans
+
+## Installation
+### Prerequisites
+- Node.js & npm (for React)
+- Python 3.8+ (for Flask)
+- OpenAI API Key

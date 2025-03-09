@@ -12,6 +12,7 @@ The **Yelp Menu Aggregator** is a web application that leverages LLMs (Large Lan
 ## Tech Stack
 - **Frontend:** React (with Tailwind CSS for styling)
 - **Backend:** Flask (Python)
+- **Database:** MySQL / SQLite / PostgreSQL
 - **LLM Models:** OpenAI GPT
 - **Clustering Algorithm:** KMeans
 

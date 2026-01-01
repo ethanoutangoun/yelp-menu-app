@@ -160,6 +160,13 @@ const Restaurant = () => {
     console.log("generating menu");
     set_show_loading(true);
 
+    
+
+
+
+
+    return;
+
     if (!restaurant) {
       console.error("Restaurant data not found");
       return;

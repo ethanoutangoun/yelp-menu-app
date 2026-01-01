@@ -145,9 +145,9 @@ export async function process_clusters(apiKey, reviews) {
 export async function get_reviews(restaurantId) {
   let API_URL = `/serpapi/search.json?engine=yelp_reviews&place_id=${restaurantId}&api_key=${SERP_API_KEY}`;
 
-  if (PROD === "true") {
-    API_URL = `https://serpapi.com/search.json?engine=yelp_reviews&place_id=${restaurantId}&api_key=${SERP_API_KEY}&async=true`;
-  }
+  // if (PROD === "true") {
+  //   API_URL = `https://serpapi.com/search.json?engine=yelp_reviews&place_id=${restaurantId}&api_key=${SERP_API_KEY}&async=true`;
+  // }
   
 
   try {

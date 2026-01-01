@@ -293,8 +293,6 @@ const Feed = () => {
             `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
           );
 
-          console.log('location set nigga')
-
           setLocation(response.data.address.city);
         } else {
           console.error("Geolocation is not supported by this browser.");

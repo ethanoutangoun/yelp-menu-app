@@ -309,10 +309,10 @@ const Feed = () => {
 
   return (
     <>
-      <h2 className="text-3xl font-bold my-3 mt-5 flex gap-1">
+      <h2 className="text-3xl font-bold my-3 mt-5 flex gap-1 text-gray-900 dark:text-gray-100 transition-colors duration-200">
         Create Rated Menus <span className="hidden md:flex"> on the Fly</span>{" "}
       </h2>
-      <h3 className=" text-sm text-gray-500 max-w-[700px]">
+      <h3 className=" text-sm text-gray-500 dark:text-gray-400 max-w-[700px] transition-colors duration-200">
         Not sure what to eat at a new spot and don&apos;t want to dig through
         countless reviews? <br className="md:flex hidden" /> Generate a menu for
         your restaurant of choice and see ratings for each meal.
@@ -326,28 +326,28 @@ const Feed = () => {
         }}
         className="mt-5 flex gap-5 items-center"
       >
-        <div className="flex gap-3 items-center border border-gray-300 rounded-lg p-2 w-1/2 md:w-3/4">
-          <Search className="w-6 h-6 text-gray-500" />
+        <div className="flex gap-3 items-center border border-gray-300 dark:border-gray-600 rounded-lg p-2 w-1/2 md:w-3/4 bg-white dark:bg-gray-800 transition-colors duration-200">
+          <Search className="w-6 h-6 text-gray-500 dark:text-gray-400" />
 
           <input
             type="text"
             // id="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="focus:outline-none w-full bg-inherit autofill:bg-white"
+            className="focus:outline-none w-full bg-inherit text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             placeholder="Search for a restaurant..."
           />
         </div>
 
-        <div className="flex gap-3 items-center border border-gray-300 rounded-lg p-2 w-1/4 ">
-          <MapPin className="w-6 h-6 text-gray-500" />
+        <div className="flex gap-3 items-center border border-gray-300 dark:border-gray-600 rounded-lg p-2 w-1/4 bg-white dark:bg-gray-800 transition-colors duration-200">
+          <MapPin className="w-6 h-6 text-gray-500 dark:text-gray-400" />
 
           <input
             type="text"
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className=" focus:outline-none w-full bg-inherit"
+            className=" focus:outline-none w-full bg-inherit text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             placeholder="Location"
           />
         </div>
@@ -366,16 +366,16 @@ const Feed = () => {
       )}
 
       {results && results.length > 0 && (
-        <h4 className="mt-3 text-xl font-semibold">
+        <h4 className="mt-3 text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
           Showing restaurants near{" "}
-          <span className="text-red-700">{results[0]?.location?.city}</span>
+          <span className="text-red-700 dark:text-red-400">{results[0]?.location?.city}</span>
         </h4>
       )}
 
       {dev_mode && (
-        <h4 className="mt-3 text-xl font-semibold">
+        <h4 className="mt-3 text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
           Showing restaurants near{" "}
-          <span className="text-red-700">{mockData[0]?.location?.city}</span>
+          <span className="text-red-700 dark:text-red-400">{mockData[0]?.location?.city}</span>
         </h4>
       )}
 
@@ -387,7 +387,7 @@ const Feed = () => {
           results.map((data, index) => <Card key={index} {...data} />)}
 
         {results.length === 0 && !loading && !dev_mode && (
-          <p className="min-h-[calc(100vh-340px)] text-gray-500">No restaurants found.</p>
+          <p className="min-h-[calc(100vh-340px)] text-gray-500 dark:text-gray-400 transition-colors duration-200">No restaurants found.</p>
         )}
       </div>
     </>

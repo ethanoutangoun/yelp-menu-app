@@ -7,22 +7,35 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-body {
-
+html {
+  @apply bg-white text-gray-900;
 }
 
+html.dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+body {
+  @apply bg-white text-gray-900 transition-colors duration-200;
+}
+
+.dark body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+#root {
+  @apply min-h-screen bg-white text-gray-900 transition-colors duration-200;
+}
+
+.dark #root {
+  @apply bg-gray-900 text-gray-100;
+}
 
 button:hover {
   border-color: #646cff;
@@ -30,17 +43,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

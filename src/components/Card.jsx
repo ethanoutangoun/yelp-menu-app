@@ -18,7 +18,7 @@ const Card = (props) => {
       key={id}
       className="
         group aspect-video relative hover:cursor-pointer select-none
-        bg-gray-100 rounded-md overflow-hidden
+        bg-gray-100 dark:bg-gray-800 rounded-md overflow-hidden
         transition duration-300 ease-in-out
         md:hover:scale-[1.02]
       "
@@ -35,8 +35,8 @@ const Card = (props) => {
               className="absolute inset-0 h-full w-full object-cover"
             />
           ) : (
-            <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-              <Utensils className="w-12 h-12 sm:w-16 sm:h-16 text-gray-500" />
+            <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200">
+              <Utensils className="w-12 h-12 sm:w-16 sm:h-16 text-gray-500 dark:text-gray-400" />
             </div>
           )}
         </div>
@@ -45,23 +45,23 @@ const Card = (props) => {
         <div className="min-w-0 min-h-0 p-3 sm:p-4 overflow-hidden">
           <div className="flex items-start gap-1 min-w-0">
             <h2
-              className="font-bold text-base sm:text-lg group-hover:text-blue-500 min-w-0 flex-1 truncate"
+              className="font-bold text-base sm:text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-500 dark:group-hover:text-blue-400 min-w-0 flex-1 truncate transition-colors duration-200"
               title={name}
             >
               {name}
             </h2>
 
-            <Dot size={16} className="shrink-0 mt-1" />
+            <Dot size={16} className="shrink-0 mt-1 text-gray-900 dark:text-gray-100" />
 
             <div className="flex items-center gap-1 shrink-0">
-              <p className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap transition-colors duration-200">
                 {rating} stars
               </p>
             </div>
           </div>
 
           <p
-            className="text-xs sm:text-sm text-gray-500 mt-1 min-w-0 truncate whitespace-nowrap"
+            className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 min-w-0 truncate whitespace-nowrap transition-colors duration-200"
             title={address_text}
           >
             {address_text}
@@ -70,8 +70,8 @@ const Card = (props) => {
       </div>
 
       {/* Badge: keep it from overflowing */}
-      <div className="absolute top-2 right-2 max-w-[70%] px-2 py-1 bg-white/90 rounded-lg text-[10px] sm:text-xs">
-        <p className="truncate whitespace-nowrap">{review_count} reviews</p>
+      <div className="absolute top-2 right-2 max-w-[70%] px-2 py-1 bg-white/90 dark:bg-gray-800/90 rounded-lg text-[10px] sm:text-xs transition-colors duration-200">
+        <p className="truncate whitespace-nowrap text-gray-900 dark:text-gray-100">{review_count} reviews</p>
       </div>
     </div>
   );

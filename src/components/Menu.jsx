@@ -19,7 +19,7 @@ const Menu = (props) => {
 
   return (
     <div>
-      <h3 className="my-2 font-semibold">Menu</h3>
+      <h3 className="my-2 font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">Menu</h3>
 
       <CategoryBar
         categories={categories}

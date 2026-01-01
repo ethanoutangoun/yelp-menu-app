@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import Restaurant from "./pages/Restaurant";
 import Feed from "./pages/Feed";
 import About from "./pages/About";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 import {
   Route,
@@ -26,9 +27,11 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <RouterProvider router={router} />
+      </div>
+    </ThemeProvider>
   );
 }
 

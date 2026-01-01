@@ -368,7 +368,7 @@ const Feed = () => {
       {results && results.length > 0 && (
         <h4 className="mt-3 text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-200">
           Showing restaurants near{" "}
-          <span className="text-red-700 dark:text-red-400">{results[0]?.location?.city}</span>
+          <span className="text-red-700 dark:text-red-500">{results[0]?.location?.city}</span>
         </h4>
       )}
 

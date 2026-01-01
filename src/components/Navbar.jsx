@@ -27,7 +27,7 @@ const Navbar = () => {
           alt="Yelp Logo"
           className="w-7 h-7 hover:cursor-pointer"
         />
-        <h1 className="font-semibold text-lg text-gray-900 dark:text-gray-100 hover:cursor-pointer transition-colors duration-200">
+        <h1 className="font-semibold text-lg text-[rgb(235_51_64)] dark:text-[rgb(235_51_64)] hover:cursor-pointer transition-colors duration-200">
           MenuMeter
         </h1>
       </div>

@@ -6,6 +6,7 @@ import { StarIcon } from "lucide-react";
 import HighlightCard from "../components/HighlightCard";
 import axios from "axios";
 import LoadingBar from "../components/LoadingBar";
+import { mockMenuData } from "../mockMenuData";
 
 const Restaurant = () => {
   const API_KEY = import.meta.env.VITE_OPEN_AI_KEY;
@@ -84,12 +85,15 @@ const Restaurant = () => {
     return menuItems.flatMap((category) => category.items);
   }
 
+  // Use mock menu data when no menu exists
+  const displayMenu = menu || mockMenuData;
+
   // Once menu items loaded, trigger processing to determine menu highlights
   useEffect(() => {
-    if (!menu) {
+    if (!displayMenu) {
       return;
     }
-    const menu_items_flattened = flattenMenuItems(menu);
+    const menu_items_flattened = flattenMenuItems(displayMenu);
     const calculate_most_reviewed = () => {
       let max = 0;
 
@@ -145,7 +149,7 @@ const Restaurant = () => {
     const highlights = [...most_reviewed, ...highest_rated];
 
     setHighlights(highlights);
-  }, [menu]);
+  }, [displayMenu]);
 
   const map_steps = {
     0: "Adding Business",
@@ -159,11 +163,6 @@ const Restaurant = () => {
   const handleGenerate = async () => {
     console.log("generating menu");
     set_show_loading(true);
-
-    
-
-
-
 
     return;
 
@@ -264,18 +263,18 @@ const Restaurant = () => {
 
   return (
     <div className="mb-10 min-h-[83vh]">
-      <div className="mt-1 relative h-72">
+      <div className="mt-2 relative h-52">
         {restaurant?.image_url ? (
           <img
             src={restaurant?.image_url}
             alt={restaurant?.name}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-cover rounded-md"
           />
         ) : (
-          <div className="w-full h-full bg-gray-300 rounded-xl"></div>
+          <div className="w-full h-full bg-gray-300 rounded-md"></div>
         )}
 
-        <div className="absolute top-0 left-0 w-full h-full rounded-xl backdrop-blur-[6px]"></div>
+        <div className="absolute top-0 left-0 w-full h-full rounded-md backdrop-blur-[6px]"></div>
 
         {restaurant && (
           <div className="absolute bottom-3 left-3 p-2">
@@ -308,7 +307,7 @@ const Restaurant = () => {
         )}
       </div>
 
-      {menu && (
+      {displayMenu && (
         <div className="mt-5 py-4">
           <h4 className="text-xl font-semibold">Highlights</h4>
 
@@ -317,7 +316,7 @@ const Restaurant = () => {
               <HighlightCard key={index} {...highlight} />
             ))}
           </div>
-          <Menu menu={menu} />
+          <Menu menu={displayMenu} />
         </div>
       )}
 

@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full px-5 sm:px-10 py-4 flex z-50 justify-between backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-white/10 dark:border-gray-700/50 transition duration-300 ease-in-out`}
+      className={`fixed top-0 left-0 w-full px-5 sm:px-10 py-4 flex z-50 justify-between backdrop-blur-lg bg-white/90 dark:bg-gray-900/90 border-white/10 dark:border-gray-700/50 transition duration-300 ease-in-out`}
     >
       <div onClick={handleClick} className="flex gap-3 items-center">
         <img

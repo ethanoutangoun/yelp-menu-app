@@ -5,13 +5,18 @@ const CategoryMenu = (props) => {
   const { items } = props;
 
   return (
-    <div className="mt-5 flex flex-col gap-3">
+    <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       {items.map((item, index) => (
-        <div key={index} className="p-2 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 hover:cursor-pointer transition-colors duration-200 rounded-md">
+        <div
+          key={index}
+          className="p-2 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 hover:cursor-pointer transition-colors duration-200 rounded-md"
+        >
           {item.item}
 
           <div className="flex items-center gap-1 mt-1">
-            <p className="text-gray-700 dark:text-gray-300">{item.rating.toFixed(1)}</p>
+            <p className="text-gray-700 dark:text-gray-300">
+              {item.rating.toFixed(1)}
+            </p>
             {Array.from({ length: item.rating }, (_, i) => (
               <StarIcon
                 key={i}

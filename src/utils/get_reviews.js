@@ -1,31 +1,94 @@
-import { ApifyClient } from 'apify-client';
+import axios from "axios";
+import { mockReviews } from "../mockReviews.js";
 
-// Initialize the ApifyClient with your Apify API token
-// Replace the '<YOUR_API_TOKEN>' with your token
-const client = new ApifyClient({
-    token: '<YOUR_API_TOKEN>',
-});
+const API_TOKEN = import.meta.env.VITE_APIFY_KEY;
+const ACTOR_ID = "nwua9Gu5YrADL7ZDj";
 
-// Prepare Actor input
-const input = {
-    "startUrls": [
-        {
-            "url": "https://www.google.com/maps/place/Yellowstone+National+Park/@44.5857951,-110.5140571,9z/data=!3m1!4b1!4m5!3m4!1s0x5351e55555555555:0xaca8f930348fe1bb!8m2!3d44.427963!4d-110.588455?hl=en-GB"
-        }
-    ],
-    "maxReviews": 100,
-    "language": "en"
-};
+export async function getReviews(placeId) {
+    console.log("Using mock reviews for placeId:", placeId);
+    return mockReviews;
+}
 
-// Run the Actor and wait for it to finish
-const run = await client.actor("compass/google-maps-reviews-scraper").call(input);
+// TESTING
+export async function getReviewsProd(placeId) {
+  const input = {
+    includeWebResults: false,
+    language: "en",
+    maxCrawledPlacesPerSearch: 1,
+    maxImages: 0,
+    maxReviews: 100,
+    maximumLeadsEnrichmentRecords: 0,
+    placeIds: [placeId],
+    scrapeContacts: false,
+    scrapeDirectories: false,
+    scrapeImageAuthors: false,
+    scrapePlaceDetailPage: false,
+    scrapeReviewsPersonalData: false,
+    scrapeSocialMediaProfiles: {
+      facebooks: false,
+      instagrams: false,
+      tiktoks: false,
+      twitters: false,
+      youtubes: false,
+    },
+    scrapeTableReservationProvider: false,
+    skipClosedPlaces: false,
+    searchMatching: "all",
+    placeMinimumStars: "",
+    website: "allPlaces",
+    maxQuestions: 0,
+    reviewsSort: "mostRelevant",
+    reviewsFilterString: "",
+    reviewsOrigin: "all",
+    allPlacesNoSearchAction: "",
+  };
 
-// Fetch and print Actor results from the run's dataset (if any)
-console.log('Results from dataset');
-console.log(`💾 Check your data here: https://console.apify.com/storage/datasets/${run.defaultDatasetId}`);
-const { items } = await client.dataset(run.defaultDatasetId).listItems();
-items.forEach((item) => {
-    console.dir(item);
-});
+  console.log("Starting actor run for placeId:", placeId);
+  // 1. Start actor run
+  const runRes = await axios.post(
+    `https://api.apify.com/v2/acts/${ACTOR_ID}/runs`,
+    input,
+    {
+      params: { token: API_TOKEN },
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
-// 📚 Want to learn more 📖? Go to → https://docs.apify.com/api/client/js/docs
+  const runId = runRes.data.data.id;
+  const datasetId = runRes.data.data.defaultDatasetId;
+
+  // 2. Poll dataset (actor is async)
+  await waitForDataset(datasetId);
+
+  // 3. Fetch results
+  const itemsRes = await axios.get(
+    `https://api.apify.com/v2/datasets/${datasetId}/items`,
+    {
+      params: {
+        token: API_TOKEN,
+        clean: true,
+      },
+    }
+  );
+
+  const reviews = itemsRes.data?.[0].reviews.map((review) => ({
+    text: review.text,
+    rating: review.stars,
+  }));
+
+  return reviews;
+}
+
+async function waitForDataset(datasetId, retries = 20) {
+  for (let i = 0; i < retries; i++) {
+    const res = await axios.get(
+      `https://api.apify.com/v2/datasets/${datasetId}`,
+      { params: { token: API_TOKEN } }
+    );
+
+    if (res.data.data.itemCount > 0) return;
+    await new Promise((r) => setTimeout(r, 3000));
+  }
+
+  throw new Error("Dataset not ready in time");
+}

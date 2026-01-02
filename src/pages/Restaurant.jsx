@@ -7,6 +7,7 @@ import HighlightCard from "../components/HighlightCard";
 import axios from "axios";
 import LoadingBar from "../components/LoadingBar";
 import { mockMenuData } from "../mockMenuData";
+import { getReviews } from "../utils/get_reviews";
 
 const Restaurant = () => {
   const API_KEY = import.meta.env.VITE_OPEN_AI_KEY;
@@ -67,7 +68,7 @@ const Restaurant = () => {
 
       setRestaurant(data);
 
-      fetchStep(data.id);
+      // fetchStep(data.id);
 
       setLoading(false);
 
@@ -163,6 +164,9 @@ const Restaurant = () => {
   const handleGenerate = async () => {
     console.log("generating menu");
     set_show_loading(true);
+
+    const reviews = await getReviews(restaurant.id);
+    console.log(reviews);
 
     return;
 
@@ -263,7 +267,7 @@ const Restaurant = () => {
 
   return (
     <div className="mb-10 min-h-[83vh]">
-      <div className="mt-2 relative h-52">
+      <div className="mt-2 relative sm:h-52 h-40">
         {restaurant?.image_url ? (
           <img
             src={restaurant?.image_url}
@@ -278,7 +282,7 @@ const Restaurant = () => {
 
         {restaurant && (
           <div className="absolute bottom-3 left-3 p-2">
-            <h2 className="text-3xl font-extrabold text-white">
+            <h2 className="sm:text-3xl text-2xl font-extrabold text-white">
               {restaurant?.name}
             </h2>
 

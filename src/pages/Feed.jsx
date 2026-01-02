@@ -264,8 +264,6 @@ const Feed = () => {
       }
 
       try {
-        console.log(results);
-
         if (navigator.geolocation) {
           // Get the current position using a promise
           const position = await new Promise((resolve, reject) => {

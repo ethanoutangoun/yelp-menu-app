@@ -5,6 +5,8 @@ import { useState } from "react";
 const Menu = (props) => {
   const { menu } = props;
 
+
+
   // Set intitial category to the first one on the list
   const [selectedCategory, setSelectedCategory] = useState(menu[0].category);
 

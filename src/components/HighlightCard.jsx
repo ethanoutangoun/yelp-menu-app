@@ -1,7 +1,7 @@
 import { Trophy, StarIcon } from "lucide-react";
 
 const HighlightCard = (props) => {
-  const { item, rating, reviews, type } = props;
+  const { item, rating, num_reviews, type } = props;
 
   const parse_type = (type) => {
     if (type === "most_reviewed") {
@@ -22,7 +22,7 @@ const HighlightCard = (props) => {
           {item}{" "}
           <span className="flex gap-1 items-center font-medium">
             <StarIcon size={16} className="text-[#c33c3c] dark:text-red-400" fill="#c33c3c" />
-            {rating} ({reviews})
+            {rating} ({num_reviews})
           </span>
         </h5>
         <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">{parse_type(type)}</p>

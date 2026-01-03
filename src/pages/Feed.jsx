@@ -375,17 +375,21 @@ const Feed = () => {
         </h4>
       )}
 
-      <div className="mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+      {results && <div className="mt-5 mb-10 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
         {dev_mode &&
           mockData.map((data, index) => <Card key={index} {...data} />)}
         {results &&
           results.length > 0 &&
           results.map((data, index) => <Card key={index} {...data} />)}
 
-        {results.length === 0 && !loading && !dev_mode && (
+        {results?.length === 0 && !loading && !dev_mode && (
           <p className="min-h-[calc(100vh-340px)] text-gray-500 dark:text-gray-400 transition-colors duration-200">No restaurants found.</p>
         )}
-      </div>
+
+        
+      </div>}
+
+      {!results && <p className="mt-5 min-h-[calc(100vh-340px)] text-gray-500 dark:text-gray-400 transition-colors duration-200">Unable to retrieve data. Please check your connection and retry.</p>}
     </>
   );
 };

@@ -8,6 +8,7 @@ import axios from "axios";
 import LoadingBar from "../components/LoadingBar";
 import { mockMenuData } from "../mockMenuData";
 import { getReviews } from "../utils/get_reviews";
+import { processReviews } from "../utils/process_reviews";
 
 const Restaurant = () => {
   const API_KEY = import.meta.env.VITE_OPEN_AI_KEY;
@@ -87,7 +88,7 @@ const Restaurant = () => {
   }
 
   // Use mock menu data when no menu exists
-  const displayMenu = menu || mockMenuData;
+  const displayMenu = menu ? menu : null;
 
   // Once menu items loaded, trigger processing to determine menu highlights
   useEffect(() => {
@@ -100,13 +101,13 @@ const Restaurant = () => {
 
       // Determine max # reviews
       menu_items_flattened.forEach((item) => {
-        if (item.reviews > max) {
-          max = item.reviews;
+        if (item.num_reviews > max) {
+          max = item.num_reviews;
         }
       });
 
       const most_reviewed = menu_items_flattened.filter(
-        (item) => item.reviews === max
+        (item) => item.num_reviews === max
       );
       const most_reviewed_parsed = most_reviewed.map((item) => ({
         ...item,
@@ -122,18 +123,18 @@ const Restaurant = () => {
 
       // Determine max # reviews
       menu_items_flattened.forEach((item) => {
-        if (item.rating > max && item.reviews > 1) {
+        if (item.rating > max && item.num_reviews > 1) {
           max = item.rating;
-          maxReviews = item.reviews;
+          maxReviews = item.num_reviews;
         }
 
-        if (item.rating === max && item.reviews > maxReviews) {
-          maxReviews = item.reviews;
+        if (item.rating === max && item.num_reviews > maxReviews) {
+          maxReviews = item.num_reviews;
         }
       });
 
       const highest_rated = menu_items_flattened.filter(
-        (item) => item.rating === max && item.reviews === maxReviews
+        (item) => item.rating === max && item.num_reviews === maxReviews
       );
       const highest_rated_parsed = highest_rated.map((item) => ({
         ...item,
@@ -165,95 +166,32 @@ const Restaurant = () => {
     console.log("generating menu");
     set_show_loading(true);
 
+
+
     const reviews = await getReviews(restaurant.id);
     console.log(reviews);
 
-    return;
+    setStep(2);
+
 
     if (!restaurant) {
       console.error("Restaurant data not found");
       return;
     }
 
-    // post the business
-    const response = await axios.post(
-      `${API_URL}/business/${restaurant.id}`,
-      {
-        alias: restaurant.alias,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    if (response.status === 200) {
-      console.log("business added");
-      setStep(1);
-    }
-
-    // fetch the reviews from serp
-    console.log("fetching reviews");
-    const res = await get_reviews(restaurant.id);
-    const raw_reviews = res.reviews.map(({ comment, rating }) => ({
-      comment: comment.text,
-      rating,
-    }));
-
-    console.log(raw_reviews);
-
-    const res2 = await axios.post(
-      `${API_URL}/reviews/${restaurant.id}`,
-      raw_reviews
-    );
-
-    if (res2.status === 200) {
-      console.log("reviews added");
-      setStep(2);
-    } else {
-      console.error("reviews not added", res2.status);
-      return;
-    }
-
-    console.log("sending to openai for processing...");
-
-    const res3 = await process_reviews(API_KEY, raw_reviews);
-    console.log(res3);
-
+    const processed_reviews = await processReviews({reviews, placeId: restaurant.id});
+    console.log("processed reviews:", processed_reviews);
     setStep(3);
-
-    console.log("clustering reviews...");
-
-    const res4 = await axios.post(`${API_URL}/cluster`, res3);
-
-    // This are the raw menu items clustered into likewise items with an averaged rating
-    // For example: {item: "item", rating: 4.5, reviews: 10}
-    const clustered_items_raw = res4.data;
-
-    const menu = await process_clusters(API_KEY, clustered_items_raw);
-    console.log(menu);
     setStep(4);
 
-    console.log("posting menu...");
-    const res5 = await post_menu(menu);
-    console.log(res5);
+    setMenu(processed_reviews);
 
-    setMenu(res5.data.menu);
-
-    console.log(res5.data);
-    console.log("menu posted");
-    setStep(5);
 
     set_show_loading(false);
+    setStep(5);
+    setLoading(false);
   };
 
-  const post_menu = async (data) => {
-    const res = await axios.post(`${API_URL}/menu/${restaurant.id}`, data);
-
-    console.log(res);
-    return res;
-  };
 
   const get_menu = async (bid) => {
     console.log("getting menu");

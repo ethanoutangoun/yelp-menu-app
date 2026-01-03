@@ -43,15 +43,15 @@ const Card = (props) => {
 
         {/* CONTENT ROW (prevent overflow) */}
         <div className="min-w-0 min-h-0 p-3 sm:p-4 overflow-hidden">
-          <div className="flex items-start gap-1 min-w-0">
+          <div className="flex items-center gap-1 min-w-0">
             <h2
-              className="font-bold text-base sm:text-lg text-gray-900 dark:text-gray-100 group-hover:text-red-700 dark:group-hover:text-red-500 min-w-0 flex-1 truncate transition-colors duration-200"
+              className="font-bold text-base sm:text-lg text-gray-900 dark:text-gray-100 group-hover:text-red-700 dark:group-hover:text-red-500 min-w-0 truncate transition-colors duration-200"
               title={name}
             >
               {name}
             </h2>
 
-            <Dot size={16} className="shrink-0 mt-1 text-gray-900 dark:text-gray-100" />
+            <Dot size={16} className="shrink-0 text-gray-900 dark:text-gray-100" />
 
             <div className="flex items-center gap-1 shrink-0">
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap transition-colors duration-200">

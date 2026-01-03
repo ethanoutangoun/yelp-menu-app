@@ -26,7 +26,7 @@ const CategoryMenu = (props) => {
               />
             ))}
 
-            <p className="text-gray-700 dark:text-gray-300">({item.reviews})</p>
+            <p className="text-gray-700 dark:text-gray-300">({item.num_reviews})</p>
           </div>
         </div>
       ))}

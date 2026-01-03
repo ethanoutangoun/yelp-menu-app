@@ -4,13 +4,13 @@ import { mockReviews } from "../mockReviews.js";
 const API_TOKEN = import.meta.env.VITE_APIFY_KEY;
 const ACTOR_ID = "nwua9Gu5YrADL7ZDj";
 
-export async function getReviews(placeId) {
+export async function getReviewsMock(placeId) {
     console.log("Using mock reviews for placeId:", placeId);
     return mockReviews;
 }
 
 // TESTING
-export async function getReviewsProd(placeId) {
+export async function getReviews(placeId) {
   const input = {
     includeWebResults: false,
     language: "en",

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = 'http://127.0.0.1:3000/api/reviews/process';
+// const API_URL = 'http://127.0.0.1:3000/api/reviews/process';
+const API_URL = 'https://menu-app-api.vercel.app/api/reviews/process';   
 
 export async function processReviews({ reviews, placeId }) {
   if (!reviews || reviews.length === 0) {
